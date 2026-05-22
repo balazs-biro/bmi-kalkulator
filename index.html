@@ -54,49 +54,35 @@
       letter-spacing: 0.5px;
     }
 
-    .slider-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 10px;
+    .input-wrap {
+      position: relative;
     }
 
-    .slider-value {
-      font-size: 28px;
-      font-weight: 800;
+    input[type="number"] {
+      width: 100%;
+      padding: 14px 50px 14px 16px;
+      border: 2px solid #e8e8e8;
+      border-radius: 12px;
+      font-size: 18px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
       color: #1a1a2e;
+      transition: border-color 0.2s;
+      outline: none;
     }
 
-    .slider-value span {
+    input[type="number"]:focus {
+      border-color: #667eea;
+    }
+
+    .unit {
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #aaa;
       font-size: 14px;
       font-weight: 600;
-      color: #aaa;
-      margin-left: 2px;
-    }
-
-    input[type="range"] {
-      -webkit-appearance: none;
-      width: 100%;
-      height: 6px;
-      border-radius: 999px;
-      background: #e8e8e8;
-      outline: none;
-      cursor: pointer;
-    }
-
-    input[type="range"]::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      cursor: pointer;
-      box-shadow: 0 2px 8px rgba(102, 126, 234, 0.4);
-      transition: transform 0.15s;
-    }
-
-    input[type="range"]::-webkit-slider-thumb:hover {
-      transform: scale(1.2);
     }
 
     button {
@@ -228,19 +214,19 @@
     <p class="subtitle">Számítsd ki a testtömegindexedet</p>
 
     <div class="input-group">
-      <div class="slider-header">
-        <label>Magasság</label>
-        <div class="slider-value" id="magassagErtek">175<span>cm</span></div>
+      <label>Magasság</label>
+      <div class="input-wrap">
+        <input type="number" id="magassag" placeholder="175" min="100" max="250">
+        <span class="unit">cm</span>
       </div>
-      <input type="range" id="magassag" min="100" max="250" value="175" oninput="document.getElementById('magassagErtek').innerHTML=this.value+'<span>cm</span>'">
     </div>
 
     <div class="input-group">
-      <div class="slider-header">
-        <label>Testsúly</label>
-        <div class="slider-value" id="sulyErtek">70<span>kg</span></div>
+      <label>Testsúly</label>
+      <div class="input-wrap">
+        <input type="number" id="suly" placeholder="70" min="30" max="300">
+        <span class="unit">kg</span>
       </div>
-      <input type="range" id="suly" min="30" max="200" value="70" oninput="document.getElementById('sulyErtek').innerHTML=this.value+'<span>kg</span>'">
     </div>
 
     <button onclick="szamol()">Kiszámít</button>
